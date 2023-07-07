@@ -48,7 +48,23 @@ const fs = require('fs')
         }
             }
    
-  }
+  },
+  async customModelCompletion(req, res) {
+    const { model, prompt, max_tokens } = req.body
+        try {
+          const chatCompletion = await openai.createChatCompletion({
+          model,
+          messages: [{role: "user", content: prompt}],
+          // max_tokens
+        });
+          console.log(chatCompletion, "ini response")
+      res.json(chatCompletion.data)
+      } catch (err) {
+          res.send(err.message)
+      }
+    }
+   
+  
 }
 
 module.exports = createCompletion

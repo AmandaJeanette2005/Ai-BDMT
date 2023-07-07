@@ -12,7 +12,7 @@ const fileId = require ('./fileId.js')
       model : model
     })
     console.log('response: ', response)
-    res.json({data : response})
+    res.status(200).send(response)
     // console.log(fileId)
   } catch (err) {
     console.log('error: ', err)

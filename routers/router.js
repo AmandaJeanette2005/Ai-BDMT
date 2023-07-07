@@ -6,8 +6,10 @@ const createFineTune = require('../createFineTune')
 const router = express.Router()
 
 router.post('/', createCompletion.model)
+router.post('/custom-model', createCompletion.customModelCompletion)
 router.post('/uploadFile', upload.uploadFineTune)
 router.get('/list', listFineTunes.list)
 router.post('/create', createFineTune.create)
+router.post('/completion', createCompletion.model)
 
 module.exports = router
