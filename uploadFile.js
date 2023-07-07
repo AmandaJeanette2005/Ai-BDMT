@@ -1,17 +1,22 @@
-import { openai } from './api.js'
-import fs from 'fs'
+const { openai } = require ('./api.js')
+const fs = require ('fs')
 
-async function upload() {
-  try {
-    const response = await openai.createFile(
-      fs.createReadStream('./data_prepared.jsonl'),
-      'fine-tune'
-    );
-    console.log('File ID: ', response.data.id)
-    fs.writeFileSync('./fileId.js', `export const fileId = "${response.data.id}"`)
-  } catch (err) {
-    console.log('err: ', err)
+const upload =  {
+
+  async uploadFineTune(req, res){
+    try {
+        const response = await openai.createFile(
+          fs.createReadStream('./datakosong.jsonl'),
+          'fine-tune'
+        );
+        console.log('File ID: ', response.data.id)
+        fs.writeFileSync(`${response.data.id}`, `export const fileId = "${response.data.id}"`)
+        res.send("succes!")
+      } catch (err) {
+        console.log('err: ', err)
+      }
   }
-}
+      
+    }
 
-upload()
+module.exports = upload

@@ -1,12 +1,17 @@
-import { openai } from './api.js'
+const { openai } = require ('./api.js')
 
-async function listFineTunes() {
-  try {
+const listFineTunes = {
+
+  async list(req, res){
+    try {
     const response = await openai.listFineTunes()
     console.log('data: ', response.data.data)
+    res.send(response.data.data)
   } catch (err) {
     console.log('error:', err)
   }
+  }
+  
 }
 
-listFineTunes()
+module.exports = listFineTunes

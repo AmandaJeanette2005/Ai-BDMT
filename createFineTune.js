@@ -1,16 +1,25 @@
-import { openai } from './api.js'
-import { fileId } from './fileId.js'
+const { openai } = require ('./api.js')
+const fileId = require ('./fileId.js')
 
-async function createFineTune() {
-  try {
+
+ const createFineTune = {
+
+  async create(req, res) {
+    const { model } = req.body
+     try {
     const response = await openai.createFineTune({
       training_file: fileId,
-      model: 'davinci:ft-personal-2023-03-31-01-09-15'
+      model : model
     })
     console.log('response: ', response)
+    res.json({data : response})
+    // console.log(fileId)
   } catch (err) {
-    console.log('error: ', err.response.data.error)
+    console.log('error: ', err)
+    res.send(err)
   }
+  }
+ 
 }
 
-createFineTune()
+module.exports = createFineTune

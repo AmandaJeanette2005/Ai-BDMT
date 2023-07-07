@@ -1,6 +1,6 @@
 import { openai } from './api.js'
 
-async function deleteFineTune() {
+const deleteFineTune = {
   try {
     const response = await openai.deleteModel('curie:ft-personal-2023-03-18-18-02-20')
     console.log('response: ', response)
@@ -9,4 +9,4 @@ async function deleteFineTune() {
   }
 }
 
-deleteFineTune()
+module.exports = deleteFineTune

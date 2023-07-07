@@ -1,1 +1,3 @@
-export const fileId = "file-yrT0rUYseLeZY1oqnywqSdGi"
+const fileId = "file-g7RpOClbZENVeVNvExirKy3e"
+
+module.exports = fileId
