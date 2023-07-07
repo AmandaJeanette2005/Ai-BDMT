@@ -11,5 +11,6 @@ router.post('/uploadFile', upload.uploadFineTune)
 router.get('/list', listFineTunes.list)
 router.post('/create', createFineTune.create)
 router.post('/completion', createCompletion.model)
+router.get('/save-template', createCompletion.saveTemplate)
 
 module.exports = router
